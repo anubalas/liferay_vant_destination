@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+    id 'com.liferay.portal.tools.bundle.support' version '4.0.0'
+}
+
+group = 'com.example'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://repository-cdn.liferay.com/nexus/content/groups/public"
+    }
+}
+
+dependencies {
+    compileOnly group: "com.liferay.portal", name: "release.portal.api"
+    compileOnly group: "javax.ws.rs", name: "javax.ws.rs-api", version: "2.1"
+}
+
+sourceCompatibility = "11"
+targetCompatibility = "11"
