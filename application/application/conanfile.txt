@@ -1,0 +1,6 @@
+[requires]
+# Add your dependencies here, e.g.,
+# PkgName/Version@user/channel
+
+[generators]
+CMakeToolchain
