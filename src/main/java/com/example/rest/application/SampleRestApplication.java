@@ -10,6 +10,8 @@ import com.example.rest.resource.SampleRestResource;
 @ApplicationPath("/sample")
 public class SampleRestApplication extends Application {
 
+// adding comments 
+
     @Override
     public Set<Class<?>> getClasses() {
         Set<Class<?>> classes = new HashSet<>();
