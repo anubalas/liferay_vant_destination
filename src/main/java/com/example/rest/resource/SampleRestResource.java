@@ -10,7 +10,16 @@ public class SampleRestResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String sayHello() {
-        return "{\"message\": \"Hello from Liferay REST API using Java 11!\"}";
+    public HelloResponse sayHello() {
+        return new HelloResponse("Hello from Liferay REST API using Java 11!");
+    }
+
+    // Minimal POJO inside the same file
+    public static class HelloResponse {
+        public String message;
+
+        public HelloResponse(String message) {
+            this.message = message;
+        }
     }
 }
