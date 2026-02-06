@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Management</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Order Management</h1>
+    <div id="order-list"></div>
+    <div id="order-details" style="display:none;"></div>
+    <button id="create-order">Create New Order</button>
+
+    <script>
+        $(document).ready(function() {
+            loadOrders();
+
+            $('#create-order').click(function() {
+                const newOrder = { name: 'New Order', description: 'Description of new order' };
+                $.post('/orders', newOrder, function() {
+                    loadOrders();
+                });
+            });
+        });
+
+        function loadOrders() {
+            $.get('/orders', function(orders) {
+                $('#order-list').empty();
+                orders.forEach(order => {
+                    $('#order-list').append(`<div>${order.name} <button onclick="deleteOrder(${order.id})">Delete</button></div>`);
+                });
+            });
+        }
+
+        function deleteOrder(id) {
+            $.ajax({
+                url: '/orders/' + id,
+                type: 'DELETE',
+                success: function() {
+                    loadOrders();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
