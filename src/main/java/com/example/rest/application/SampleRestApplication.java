@@ -1,21 +1,25 @@
-package com.example.rest.application;
+package com.example.rest.resource;
 
-import javax.ws.rs.core.Application;
-import javax.ws.rs.ApplicationPath;
-import java.util.Set;
-import java.util.HashSet;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
-import com.example.rest.resource.SampleRestResource;
+@Path("/hello")
+public class SampleRestResource {
 
-@ApplicationPath("/sample")
-public class SampleRestApplication extends Application {
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public HelloResponse sayHello() {
+        return new HelloResponse("Hello from Liferay REST API using Java 11!");
+    }
 
-// adding comments 
+    // Minimal POJO inside the same file
+    public static class HelloResponse {
+        public String message;
 
-    @Override
-    public Set<Class<?>> getClasses() {
-        Set<Class<?>> classes = new HashSet<>();
-        classes.add(SampleRestResource.class);
-        return classes;
+        public HelloResponse(String message) {
+            this.message = message;
+        }
     }
 }
