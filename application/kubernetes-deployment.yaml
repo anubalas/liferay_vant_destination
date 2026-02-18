@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iot-monitoring
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: iot-monitoring
+  template:
+    metadata:
+      labels:
+        app: iot-monitoring
+    spec:
+      containers:
+      - name: iot-monitoring
+        image: your-docker-repo/iot-monitoring:latest
+        ports:
+        - containerPort: 8080

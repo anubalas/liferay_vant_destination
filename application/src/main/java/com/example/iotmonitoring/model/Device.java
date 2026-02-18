@@ -1,0 +1,73 @@
+package com.example.iotmonitoring.model;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+/**
+ * Device represents the metadata of an IoT device.
+ */
+@Entity
+@Table(name = "device")
+public class Device {
+
+    @Id
+    @GeneratedValue
+    private UUID id;
+
+    private String name;
+    private String type;
+    private String location;
+
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
+    // Getters and Setters
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+}

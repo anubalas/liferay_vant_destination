@@ -1,0 +1,14 @@
+version: '3'
+services:
+  elasticsearch:
+    image: elasticsearch:7.10.0
+    environment:
+      - discovery.type=single-node
+  logstash:
+    image: logstash:7.10.0
+    ports:
+      - "5044:5044"
+  kibana:
+    image: kibana:7.10.0
+    ports:
+      - "5601:5601"
